@@ -1,0 +1,197 @@
+/*!
+ * fileicons
+ */
+ 
+.fileicon {
+	background:url('/assets/img/sprite_list_icon.gif') 9999px 9999px no-repeat;
+	width: 26px;
+	height: 22px;
+	vertical-align: middle;
+	white-space: nowrap;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+table a{
+	color:#344050;
+	text-decoration: none;
+}
+
+table td {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+table {
+  table-layout: fixed; 
+}
+
+.fileicon-folder-close{
+	background-position: 0px 0px;
+}
+.fileicon-pic{
+	 background-position: -0px -80px;
+}
+.fileicon-visio{
+	 background-position: -32px -80px;
+}
+.fileicon-pdf{
+	 background-position: -64px -80px;
+}
+.fileicon-doc{
+	 background-position: -96px -80px;
+}
+.fileicon-excel{
+	 background-position: -128px -80px;
+}
+.fileicon-text{
+	 background-position: -160px -80px;
+}
+.fileicon-music{
+	 background-position: -192px -80px;
+}
+.fileicon-video{
+	background-position: -224px -80px;
+}
+.fileicon-ppt{
+	background-position: -256px -80px;
+}
+.fileicon-mac{
+	background-position: -288px -80px;
+}
+.fileicon-iso{
+	background-position: -320px -80px;
+}
+.fileicon-zip{
+	background-position: -352px -80px;
+}
+.fileicon-android{
+	background-position: -384px -80px;
+}
+.fileicon-other{
+	background-position: -416px -80px;
+}
+.fileicon-bt{
+	 background-position: -448px -80px;
+}
+
+/*!
+ * wxpay
+ */
+
+.pw-box-ft {
+    height: 60px;
+    padding: 8px 0 8px 80px;
+    background: url('/assets/img/icon-red.png') 30px 8px no-repeat #ff7674;
+    color: #fff;
+    line-height: 22px;
+    width: 222px;
+    font-size: 14px;
+}
+
+
+@media (max-width : 500px) {
+
+	.modal-dialog {
+		margin: 0rem;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.modal-content {
+		border: 0;
+		border-radius: 0.375rem 0.375rem 0 0;
+		outline: 0;
+	}
+	
+	.modal.fade .modal-dialog {
+		transform: translate3d(0, 100vh, 0);
+	}
+	
+	.modal.show .modal-dialog {
+		transform: translate3d(0, 0, 0);
+	}
+	
+
+}
+
+.mb_vip_item.active
+{
+	background-color: rgba(115, 255, 236, 0.18)
+}
+
+#wxpay_qrcode {
+    width: 222px;
+    height: 222px;
+    background-image: url('/assets/img/wx_loading.gif');
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+.wx_browser_warp {
+	display: none;
+}
+
+.wx_browser_bg {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: #000;
+	opacity: 0.8;
+	z-index: 9999;
+}
+
+.open_wx_browser {
+	position: fixed;
+	max-width: 72.65625%;
+	top: 0;
+	right: 0;
+	z-index: 9999;
+}
+
+.open_wx_browser img {
+	width: 100%;
+}
+
+.flash {
+	-moz-animation: flash 1s ease-out;
+	-moz-animation-iteration-count: 10;
+  
+	-webkit-animation: flash 1s ease-out;
+	-webkit-animation-iteration-count: 10;
+  
+	-ms-animation: flash 1s ease-out;
+	-ms-animation-iteration-count: 10;
+  }
+  
+  @keyframes flash {
+	  0% { background-color: transparent; }
+	  50% { background-color: #fbf8b2; }
+	  100% { background-color: transparent; }
+  }
+  
+  @-webkit-keyframes flash {
+	  0% { background-color: transparent; }
+	  50% { background-color: #fbf8b2; }
+	  100% { background-color: transparent; }
+  }
+  
+  @-moz-keyframes flash {
+	  0% { background-color: transparent; }
+	  50% { background-color: #fbf8b2; }
+	  100% { background-color: transparent; }
+  }
+  
+  @-ms-keyframes flash {
+	  0% { background-color: transparent; }
+	  50% { background-color: #fbf8b2; }
+	  100% { background-color: transparent; }
+  }

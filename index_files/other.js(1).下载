@@ -1,0 +1,1169 @@
+vip_buy = function (vip_id) {
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=vip&action=buy&vip_id=" +
+    vip_id +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+mobile_vip_buy = function (vip_id) {
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=vip&action=mobilebuy&vip_id=" +
+    vip_id +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+complete_register = function () {
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=complete_register&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+checkOnclick = function () {
+  checkedIDs.length = 0;
+  $("#table_files tr > td:first-child input:checkbox")
+    .filter(":checked")
+    .each(function () {
+      checkedIDs.push($(this).val());
+    });
+  if (checkedIDs.length == 0) {
+    $("#file-control").hide();
+    $("#table_files th input:checkbox").attr("checked", false);
+    $("#table_files_wrapper > .row-fluid:first-child").fadeIn(500);
+  } else {
+    $("#selected_files_count").html(checkedIDs.length);
+    $("#table_files_wrapper > .row-fluid:first-child").hide();
+    $("#file-control").fadeIn(500);
+  }
+};
+
+bulk_muti_down = function () {
+  if (checkedIDs.length == 0) {
+    cterror(lang_json["please_select_file_to_continue"]);
+    return false;
+  }
+
+  var idlist = checkedIDs.join(",");
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=file_mutiple_download&uid=" +
+    userid +
+    "&file_id=" +
+    idlist +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+bulk_pack_down = function () {
+  if (checkedIDs.length == 0) {
+    cterror(lang_json["please_select_file_to_continue"]);
+    return false;
+  }
+
+  var idlist = checkedIDs.join(",");
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=file_package_download&uid=" +
+    userid +
+    "&file_id=" +
+    idlist +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+bulk_file_save = function () {
+  if (checkedIDs.length == 0) {
+    cterror(lang_json["please_select_file_to_continue"]);
+    return false;
+  }
+
+  var idlist = checkedIDs.join(",");
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=file_save&uid=" +
+    userid +
+    "&file_id=" +
+    idlist +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+file_openzip = function () {
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=file_unzip&task=readonly&uid=" +
+    userid +
+    "&file_id=" +
+    file_id +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+file_unzip = function () {
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=file_unzip&uid=" +
+    userid +
+    "&file_id=" +
+    file_id +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+file_zip = function () {
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=file_zip&uid=" +
+    userid +
+    "&file_id=" +
+    file_id +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+file_play = function () {
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=file_play&uid=" +
+    userid +
+    "&file_id=" +
+    file_id +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+file_save = function () {
+  $(ctmodal).load(
+    api_server +
+    "/api.php?item=file_act&action=file_save&uid=" +
+    userid +
+    "&file_id=f" +
+    file_id +
+    "&token=" +
+    getTokenId(),
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+free_vip_upgrade = function (file_size) {
+  $(ctmodal)
+    .load(
+      api_server +
+      "/api.php?item=file_act&action=premium&file_size=" +
+      file_size
+    )
+    .modal({ backdrop: "static" })
+    .draggable();
+};
+
+prepareSlowDown = function () {
+  $(ctmodal).load(
+    api_server + "/api.php?item=file_act&action=gowithapp",
+    function () {
+      rivets.bind($(ctmodal), { lang: lang_json });
+      $(ctmodal).modal();
+    }
+  );
+};
+
+function file_down(mb, app) {
+  file_down_init(file_id, 0, file_chk, mb, app);
+}
+
+function dir_down(mb, app) {
+  file_down_init(0, folder_id, file_chk, mb, app);
+}
+
+function CloseAndScrollToVIP() {
+  if ($(ctmodal).hasClass("show")) {
+    $(ctmodal).modal("hide");
+  }
+  $("html, body").animate({
+    scrollTop: $(document).height() - $(window).height() - 150,
+  });
+}
+
+function file_down_init(file_id, folder_id, file_chk, mb, app, verifycode) {
+  if (!app && !mb && is_weixn_qq()) {
+    wx_browser_show();
+    return false;
+  }
+
+  var acheck = mb
+    ? $("#mobile-500x200:visible").length
+    : $("#760ad:visible").length;
+
+  verifycode = typeof verifycode !== "undefined" ? verifycode : "";
+  $.getJSON(
+    api_server +
+    "/get_file_url.php?uid=" +
+    userid +
+    "&fid=" +
+    file_id +
+    "&folder_id=" +
+    folder_id +
+    "&file_chk=" +
+    file_chk +
+    "&mb=" +
+    mb +
+    "&token=" +
+    getTokenId() +
+    "&app=" +
+    app +
+    "&acheck=" +
+    acheck +
+    "&verifycode=" +
+    verifycode +
+    "&rd=" +
+    Math.random(),
+    function (data) {
+      if (data.code == 503) {
+        $(ctmodal).load(
+          api_server +
+          "/api.php?item=file_act&action=verifycode&uid=" +
+          userid +
+          "&fid=" +
+          file_id +
+          "&folder_id=" +
+          folder_id +
+          "&file_chk=" +
+          file_chk +
+          "&token=" +
+          getTokenId() +
+          "&mb=" +
+          mb +
+          "&app=" +
+          app,
+          function () {
+            rivets.bind($(ctmodal), { lang: lang_json });
+            $(ctmodal).modal();
+          }
+        );
+      }
+
+      if (data.code == 302) {
+        window.location.href = data.url;
+      }
+
+      if (data.code == 215) {
+        alert(data.message);
+      }
+
+      if (data.code == 216) {
+        $(ctmodal).load(
+          api_server +
+          "/api.php?item=file_act&action=download_queue&uid=" +
+          userid +
+          "&fid=" +
+          file_id +
+          "&folder_id=" +
+          folder_id +
+          "&token=" +
+          getTokenId() +
+          "&mb=" +
+          mb,
+          function () {
+            rivets.bind($(ctmodal), { lang: lang_json });
+            $(ctmodal).modal();
+          }
+        );
+      }
+
+      if (data.code == 217) {
+        $(ctmodal).load(
+          api_server +
+          "/api.php?item=file_act&action=download_limit&uid=" +
+          userid +
+          "&fid=" +
+          file_id +
+          "&folder_id=" +
+          folder_id +
+          "&token=" +
+          getTokenId() +
+          "&mb=" +
+          mb +
+          "&waittime=" +
+          data.waittime,
+          function () {
+            rivets.bind($(ctmodal), { lang: lang_json });
+            $(ctmodal).modal();
+          }
+        );
+      }
+
+      if (data.code == 215 || data.code == 216 || data.code == 217) {
+        if (
+          $("#doubleclick_log").length > 0 &&
+          $("#doubleclick_log").attr("src").length > 20
+        ) {
+          setTimeout(function () {
+            $("#doubleclick_log").attr("src", data.confirm_url);
+          }, 10000);
+        }
+
+        if (data.pop > 0) {
+          setTimeout(function () {
+            important_window();
+          }, 4000);
+        }
+      }
+
+      if (data.code == 200) {
+        if (
+          $("#doubleclick_log").length > 0 &&
+          $("#doubleclick_log").attr("src").length > 20
+        ) {
+          setTimeout(function () {
+            $("#doubleclick_log").attr("src", data.confirm_url);
+          }, 10000);
+        }
+
+        if (app) {
+          if (!mb) {
+            $(
+              '<div style="display:none;"><iframe src="ctfile://xturl' +
+              data.xt_link +
+              '" frameborder="0" scrolling="no" id="myFrame"></iframe></div>'
+            ).appendTo("body");
+            //window.location.href = "ctfile://xturl" + data.xt_link;
+            $(ctmodal).load(
+              api_server +
+              "/api.php?item=file_act&action=xt_downlink&xtlink=" +
+              data.xt_link,
+              function () {
+                rivets.bind($(ctmodal), { lang: lang_json });
+                $(ctmodal).modal();
+              }
+            );
+          } else {
+            window.location.href =
+              "ctfile://inapp.ctfile.com/app.php?||xt||ctfile://xturl" +
+              data.xt_link;
+            $("#xtlink_input").val("ctfile://xturl" + data.xt_link);
+            $("#xtlink_copy_alert").show();
+          }
+        } else {
+          /*
+        if (data.showvip == 1)
+        {
+          if (!mb) {
+            setTimeout(function () { free_vip_upgrade(data.file_size); }, 1500);
+          } else {
+            setTimeout(function () { $("#free_down_alert").show(); }, 1500);
+          }
+        }
+        */
+
+          if (data.pop > 0) {
+            important_window();
+          }
+
+          // var isInsideDomain =
+          //   window.location.host.indexOf(".ctfile.com") > 0 ? true : false;
+          //if (data.xhr && isInsideDomain && isFetchAPISupported()) {
+          if (data.xhr && isFetchAPISupported()) {
+            downloadFile(data);
+          } else if (data.downurl) {
+            setTimeout(function () {
+              window.location.href = data.downurl;
+            }, 100);
+          }
+        }
+      }
+    }
+  );
+}
+
+var _popup_ispoped = false;
+function important_window() {
+  var _popheight = screen.height * 0.8;
+  var _popwidth = screen.height * 0.8;
+
+  if (!_popup_ispoped) {
+    _popup_ispoped = true;
+    myWindow = window.open(
+      "http://mydisplay.ctfile.com/popjump.php?r=" + Math.random(),
+      "",
+      "width=" +
+      _popwidth +
+      ",height=" +
+      _popheight +
+      ",top=" +
+      (screen.height - _popheight) +
+      ",left=" +
+      (screen.width - _popwidth)
+    );
+    myWindow.blur();
+  }
+}
+
+function is_weixn_qq() {
+  var ua = navigator.userAgent.toLowerCase();
+  var ref = document.referrer;
+  if (ua.match(/MicroMessenger|QQ\/|weibo|alipay|tieba|zhihu|baidu/i)) {
+    return true;
+  }
+
+  if (ref.match(/nativeapp\.toutiao|test\.toutiao/i)) {
+    return true;
+  }
+
+  return false;
+}
+
+function is_ios() {
+  var ua = navigator.userAgent.toLowerCase();
+  if (ua.match(/iphone|ipad/i)) {
+    return true;
+  }
+  return false;
+}
+
+function wx_browser_hide() {
+  $(".wx_browser_warp").hide();
+}
+
+function wx_browser_show() {
+  $(".wx_browser_warp").show();
+}
+
+function mobileapp_predownload() {
+  $("#doubleclick_log").attr(
+    "src",
+    "https://doubleclick.ctfile.com/vip_log.php"
+  );
+}
+
+function changeCaptcha() {
+  $("#captcha-img").attr(
+    "src",
+    api_server + "/randcodeV2_login.php?r=" + Math.random()
+  );
+}
+
+function loadCaptcha() {
+  if ($("#captcha-img:visible").length == 0) {
+    $("#captcha-img").show();
+    changeCaptcha();
+  }
+}
+
+ctsuccess = function (content) {
+  $("#toast-title").html(lang_json["action_success"]);
+  $("#toast-message").html(content);
+  $(".toast").toast("show");
+  setTimeout("checkOnclick()", 1000);
+};
+
+cterror = function (content) {
+  $("#toast-title").html(lang_json["action_failed"]);
+  $("#toast-message").html(content);
+  $(".toast").toast("show");
+};
+
+function user_logout() {
+  $.ajax({
+    type: "GET",
+    url:
+      api_server + "/api.php?item=account&action=logout&token=" + getTokenId(),
+    dataType: "json",
+    success: function (res) {
+      webpage_reload();
+    },
+  });
+}
+
+document.writeln(
+  '<div class="modal fade" id="infoModal"  tabindex="-1" role="dialog" aria-hidden="true"></div>'
+);
+var ctmodal = "#infoModal";
+var checkedIDs = new Array();
+
+var filequery = null;
+var file_id = 0;
+var folder_id = 0;
+var file_chk = 0;
+var userid = 0;
+var global_site = 0;
+var passcode = "";
+var api_server = "https://webapi.ctfile.com";
+var lang_json = null;
+var pass_autocomplete = false;
+
+function changeLanguage() {
+  var selected_lang = $("#languageSelect option:selected").val();
+  if (selected_lang != lang_json["language"]) {
+    var domain_info = location.host.split(".");
+    domain_info.shift();
+    document.cookie =
+      "lang=" +
+      selected_lang +
+      "; expires=Wed, 05 Aug 2050 23:00:00 UTC; path=/; domain=." +
+      domain_info.join(".");
+  }
+  webpage_reload();
+}
+
+function webpage_reload() {
+  init_load();
+  if (receivedLength !== undefined && receivedLength > 0) {
+    restartDownload();
+  }
+}
+
+rivets.formatters.langcompare = function (value, item) {
+  if (value == item) {
+    return "selected";
+  }
+  return null;
+};
+
+function page_right_register() {
+  $("#register-form").ajaxForm({
+    dataType: "json",
+    url:
+      api_server +
+      "/api.php?item=account&action=register&gb=" +
+      global_site +
+      "&token=" +
+      getTokenId(),
+    success: function (data) {
+      if (data.code == 200) {
+        webpage_reload();
+
+        $("#doubleclick_log").attr(
+          "src",
+          "https://doubleclick.ctfile.com/?mod=stat&act=reglog"
+        );
+      } else {
+        $("#reg-response-msg").html(data.message);
+        $("#reg-response-info").show();
+      }
+    },
+    beforeSubmit: function (arr, $form, options) {
+      if ($form.find("#reg-email").val() == "") {
+        $("#reg-response-msg").html(lang_json["regform"]["please_enter_email"]);
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      if (
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+          $form.find("#reg-email").val()
+        ) == false
+      ) {
+        $("#reg-response-msg").html(
+          lang_json["account"]["please_enter_valid_email"]
+        );
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      if ($form.find("#reg-password").val() == "") {
+        $("#reg-response-msg").html(
+          lang_json["regform"]["please_enter_password"]
+        );
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      var v = $.trim($form.find("#reg-password").val());
+      if (v.length < 6 || v.length > 30) {
+        $("#reg-response-msg").html(
+          lang_json["regform"]["password_length_limited"]
+        );
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      if (
+        $form.find("#reg-password").val() !=
+        $form.find("#reg-confirm-password").val()
+      ) {
+        $("#reg-response-msg").html(lang_json["regform"]["password_not_match"]);
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      if (/^\d+$/.test(v)) {
+        $("#reg-response-msg").html(
+          lang_json["regform"]["password_must_includes"]
+        );
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      if (/^[a-z]+$/i.test(v)) {
+        $("#reg-response-msg").html(
+          lang_json["regform"]["password_must_includes"]
+        );
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      if (!/^[A-Za-z0-9]+$/.test(v)) {
+        $("#reg-response-msg").html(
+          lang_json["regform"]["password_only_includes"]
+        );
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      if (!$form.find("#reg-register-checkbox").prop("checked")) {
+        $("#reg-response-msg").html(lang_json["regform"]["please_read_policy"]);
+        $("#reg-response-info").show();
+        return false;
+      }
+
+      if ($form.find("#reg-captcha").val() == "") {
+        $("#reg-response-msg").html(
+          lang_json["regform"]["please_enter_captcha"]
+        );
+        $("#reg-response-info").show();
+        return false;
+      }
+    },
+  });
+}
+function load_file(query, path) {
+  $.ajax({
+    type: "GET",
+    url:
+      api_server +
+      "/getfile.php?path=" +
+      path +
+      "&f=" +
+      query +
+      "&passcode=" +
+      passcode +
+      "&token=" +
+      getTokenId() +
+      "&r=" +
+      Math.random() +
+      "&ref=" +
+      encodeURI(document.referrer),
+    dataType: "json",
+    success: function (res) {
+      if (res.lang) {
+        lang_json = res.lang;
+      }
+
+      if (res.file) {
+        file_id = res.file.file_id;
+        file_chk = res.file.file_chk;
+        userid = res.file.userid;
+        global_site = res.file.global;
+      }
+
+      if (res.code == 200 && res.file) {
+        //ok to login
+        var file_template = "file-content.php";
+        if (res.file.is_mb) {
+          file_template = "file-content-mb.php";
+        }
+
+        $("#main-content").load(
+          template_url +
+          "/template/" +
+          file_template +
+          "?pop=" +
+          res.file.popad,
+          function () {
+            document.title = res.file.page_title;
+            rivets.bind($("body"), { file: res.file, lang: lang_json });
+            loadtextad();
+           // page_right_register();
+          }
+        );
+
+        if (res.file.doubleclick_url) {
+          $("#doubleclick_log").attr("src", res.file.doubleclick_url);
+        }
+
+        if (res.file.xtredirect && res.file.forceApp) {
+          setTimeout(function () {
+            window.location.href = "ctfile://" + res.file.xtredirect;
+          }, 3000);
+        }
+      } else {
+        error_code_handler(res);
+      }
+    },
+  });
+}
+
+function loadtextad() {
+  $.ajax({
+    type: "GET",
+    url: api_server + "/ad_display.php?ad_pos=0&r=" + Math.random(),
+    dataType: "json",
+    success: function (res) {
+      if (res.code == 200) {
+        $("#ad_text").html(res.content);
+      }
+    },
+  });
+}
+
+function error_code_handler(res) {
+  if (res.code == 401) {
+    if (res.file.autocomplete) {
+      pass_autocomplete = res.file.autocomplete;
+    }
+    //request passcode
+    $("#main-content").load(
+      template_url + "/template/file-passcode.php",
+      function () {
+        rivets.bind($(".container"), { file: res.file, lang: lang_json });
+        loadtextad();
+      }
+    );
+    document.title = lang_json["webtitles"]["passcode"];
+  } else {
+    $("#main-content").load(
+      template_url + "/template/file-404.php",
+      function () {
+        rivets.bind($(".container"), { file: res.file, lang: lang_json });
+        loadtextad();
+      }
+    );
+    document.title = lang_json["webtitles"]["filenotfound"];
+  }
+}
+
+function load_subdir(subdir_id) {
+  window.location.href = window.location.pathname + "?" + subdir_id;
+}
+
+function load_dir(query, path) {
+  $.ajax({
+    type: "GET",
+    url:
+      api_server +
+      "/getdir.php?path=" +
+      path +
+      "&d=" +
+      query +
+      "&folder_id=" +
+      window.location.search.substring(1) +
+      "&passcode=" +
+      passcode +
+      "&token=" +
+      getTokenId() +
+      "&r=" +
+      Math.random() +
+      "&ref=" +
+      encodeURI(document.referrer),
+    dataType: "json",
+    success: function (res) {
+      if (res.lang) {
+        lang_json = res.lang;
+      }
+
+      if (res.file) {
+        folder_id = res.file.folder_id;
+        file_chk = res.file.file_chk;
+        userid = res.file.userid;
+      }
+
+      if (res.code == 200) {
+        //ok to login
+
+        var dir_template = "dir-content.php";
+        if (res.file.is_mb) {
+          dir_template = "dir-content-mb.php";
+        }
+
+        $("#main-content").load(
+          template_url + "/template/" + dir_template + "?" + res.file.popad,
+          function () {
+            document.title = res.file.page_title;
+            rivets.bind($("body"), { file: res.file, lang: lang_json });
+
+            $("#table_files").dataTable({
+              bProcessing: false,
+              bServerSide: true,
+              bAutoWidth: false,
+              sAjaxSource: api_server + res.file.url,
+              responsive: false,
+              //"pagingType":"simple",
+              lengthChange: res.file.is_mb ? false : true,
+              searching: res.file.is_mb ? false : true,
+              language: lang_json["datatables"],
+              drawCallback: function () {
+                if (res.file.is_mb) {
+                  $(".dataTables_paginate").addClass(
+                    "d-flex justify-content-center"
+                  );
+                }
+              },
+              pageLength: 10,
+              lengthMenu: [
+                [10, 25, 50, 100, 200],
+                [10, 25, 50, 100, 200],
+              ],
+              pagingType: res.file.is_mb ? "full" : "full_numbers",
+              aaSorting: res.file.is_mb ? [] : [[3, "desc"]],
+              aoColumns: res.file.is_mb
+                ? [null, { sClass: "text-center", sWidth: "110px" }]
+                : [
+                  { bSortable: false, sWidth: "50px" },
+                  null,
+                  { sClass: "text-center", sWidth: "110px" },
+                  { sClass: "text-center", sWidth: "110px" },
+                ],
+            });
+
+            $("#table_files th input:checkbox").on("click", function () {
+              var that = this;
+              $(this)
+                .closest("table")
+                .find("tr > td:first-child input:checkbox")
+                .not(":disabled")
+                .each(function () {
+                  this.checked = that.checked;
+                  checkOnclick();
+                });
+            });
+
+            $("#table_files").delegate(
+              "tr > td:first-child input:checkbox",
+              "click",
+              function () {
+                $(this).closest("tr").toggleClass("selected");
+                checkOnclick();
+              }
+            );
+
+            loadtextad();
+          }
+        );
+
+        if (res.file.doubleclick_url) {
+          $("#doubleclick_log").attr("src", res.file.doubleclick_url);
+        }
+
+        if (res.file.xtredirect && res.file.forceApp) {
+          setTimeout(function () {
+            window.location.href = "ctfile://" + res.file.xtredirect;
+          }, 3000);
+        }
+      } else {
+        error_code_handler(res);
+      }
+    },
+  });
+}
+
+function load_buy_premium(is_gb, query) {
+  $.ajax({
+    type: "GET",
+    url:
+      api_server +
+      "/getpremium.php?gb=" +
+      is_gb +
+      "&l=" +
+      query +
+      "&r=" +
+      Math.random() +
+      "&ref=" +
+      encodeURI(document.referrer),
+    dataType: "json",
+    success: function (res) {
+      if (res.lang) {
+        lang_json = res.lang;
+      }
+
+      if (res.file) {
+        global_site = res.file.global;
+      }
+
+      if (res.code == 200 && res.file) {
+        var buy_premium_template = "buy-premium.php";
+        if (res.file.is_mb) {
+          buy_premium_template = "buy-premium-mb.php";
+        }
+        $("#main-content").load(
+          template_url + "/template/" + buy_premium_template,
+          function () {
+            document.title = res.file.page_title;
+            rivets.bind($("body"), { file: res.file, lang: lang_json });
+           // page_right_register();
+
+            loadtextad();
+          }
+        );
+
+        if (res.file.doubleclick_url) {
+          $("#doubleclick_log").attr("src", res.file.doubleclick_url);
+        }
+      } else {
+        error_code_handler(res);
+      }
+    },
+  });
+}
+
+function verify_passcode() {
+  $.ajax({
+    type: "GET",
+    url:
+      api_server +
+      "/passcode.php?file_id=" +
+      file_id +
+      "&folder_id=" +
+      folder_id +
+      "&userid=" +
+      userid +
+      "&passcode=" +
+      $("#passcode").val() +
+      "&r=" +
+      Math.random(),
+    dataType: "json",
+    success: function (res) {
+      if (res.code == 200) {
+        passcode = res.file.passcode;
+        localStorage.setItem("passcode-" + filequery, res.file.passcode);
+        init_load();
+      } else {
+        error_code_handler(res);
+      }
+
+      loadtextad();
+    },
+  });
+}
+
+function init_load() {
+  var path = window.location.pathname.split("/");
+
+  if (path.length < 3) {
+    $("#main-content").load(template_url + "/template/file-notfound.php");
+    document.title = "File Not Found";
+  }
+
+  filequery = path[2];
+
+  passcode = localStorage.getItem("passcode-" + filequery);
+  if (!passcode) {
+    passcode = "";
+  }
+
+  if (path[1].indexOf("f") == 0) {
+    load_file(filequery, path[1]);
+  }
+
+  if (path[1].indexOf("d") == 0) {
+    load_dir(filequery, path[1]);
+  }
+
+  if (path[1].indexOf("premium") == 0) {
+    //path[2] is global or not , path[3] is error code
+    load_buy_premium(filequery, path[3]);
+  }
+}
+
+function getTokenId() {
+  var isInsideDomain =
+    window.location.host.indexOf(".ctfile.com") > 0 ? true : false;
+  if (isInsideDomain) {
+    return "0";
+  }
+  var tokenInStorage = localStorage.getItem("tempToken");
+  var tokenInCookie = /tempToken=([^;]+)/i.test(document.cookie)
+    ? RegExp.$1
+    : false;
+  var token = null;
+  if (tokenInCookie) {
+    token = tokenInCookie;
+  } else if (tokenInStorage) {
+    token = tokenInStorage;
+  } else {
+    token =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
+  }
+  localStorage.setItem("tempToken", token);
+  document.cookie = "tempToken=" + token + ";path=/";
+
+  return token;
+}
+
+function isFetchAPISupported() {
+  return "AbortController" in window;
+}
+
+function isDownloadTagSupported() {
+  var a = document.createElement("a");
+  if (typeof a.download != "undefined") {
+    return true;
+  }
+  return false;
+}
+
+function load_passcode() {
+  var temp_passcode = getQueryParams("p");
+ // var isInsideDomain = window.location.host.indexOf(".ctfile.com") > 0 ? true : false;
+  if (temp_passcode && $("#passcode").val().trim() == "" && pass_autocomplete) {
+    $("#passcode").val(temp_passcode);
+  }
+}
+
+function getQueryParams(params) {
+  // this is an expression to get query strings
+  let regexp = new RegExp("[?&]" + params + "=([^&#]*)", "i");
+  let qString = regexp.exec(window.location.href);
+  return qString ? qString[1] : null;
+}
+
+function prettyBytes(num) {
+  // jacked from: https://github.com/sindresorhus/pretty-bytes
+  if (typeof num !== "number" || isNaN(num)) {
+    throw new TypeError("Expected a number");
+  }
+
+  var exponent;
+  var unit;
+  var neg = num < 0;
+  var units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+
+  if (neg) {
+    num = -num;
+  }
+
+  if (num < 1) {
+    return (neg ? "-" : "") + num + " B";
+  }
+
+  exponent = Math.min(
+    Math.floor(Math.log(num) / Math.log(1000)),
+    units.length - 1
+  );
+  num = (num / Math.pow(1000, exponent)).toFixed(2) * 1;
+  unit = units[exponent];
+
+  return (neg ? "-" : "") + num + " " + unit;
+}
+function convertFileIcon(ext) {
+  var svg = "file";
+  if (
+    /^(folder|ai|apk|css|font|iso|jpg|js|mp3|mp4|doc|xls|ppt|zip|sql|svg|ttf|txtpdf|php|psd|vcf|pdf)$/.test(
+      ext
+    )
+  ) {
+    svg = ext;
+  } else if (/^(ppt|pptx)$/.test(ext)) {
+    svg = "ppt";
+  } else if (/^(doc|docx|wps|dotx)$/.test(ext)) {
+    svg = "docx";
+  } else if (/^(xls|xlsx)$/.test(ext)) {
+    svg = "xls";
+  } else if (/^(zip|rar|iso|7z|tar|gz|rpm)$/.test(ext)) {
+    svg = "zip";
+  } else if (/^(json|conf|asp|class|java|dll)$/.test(ext)) {
+    svg = "code";
+  } else if (/^(ipa|msi|apk|exe)$/.test(ext)) {
+    svg = "disc";
+  } else if (/^(aac|amr|ape|flac|m4a|m4b|m4p|mmf|mp3|wav|wma)$/.test(ext)) {
+    svg = "music";
+  } else if (
+    /^(mov|mp4|mpg|mpeg|webm|mkv|flv|vob|ogg|avi|wmv|rm|rmvb|3gp)$/.test(ext)
+  ) {
+    svg = "play";
+  } else if (/^(jpg|jpeg|png|gif|bmp|ico)$/.test(ext)) {
+    svg = "jpg";
+  }
+  return "assets/svg/filetypes/" + svg + ".svg";
+}
+
+function remainingTime(second) {
+  if (!lang_json) {
+    return null;
+  }
+  return (
+    (parseInt(second / 60 / 60)
+      ? parseInt(second / 60 / 60) + lang_json["measurements"]["hour"]
+      : "") +
+    parseInt((second / 60) % 60) +
+    lang_json["measurements"]["minute"] +
+    parseInt(second % 60) +
+    lang_json["measurements"]["second"]
+  ).replace(/\b(\d)\b/g, "0$1");
+}
+
+(function () {
+  $.ajaxSetup({
+    xhrFields: {
+      withCredentials: true,
+    },
+    crossDomain: true,
+  });
+
+  init_load();
+
+  var copyxtlink = new ClipboardJS("#xtlink_copybtn");
+  copyxtlink.on("success", function (e) {
+    ctsuccess(lang_json["copy_success_open_app"]);
+  });
+
+  copyxtlink.on("error", function (e) {
+    cterror(lang_json["copy_failed_open_app"]);
+  });
+})();

@@ -1,0 +1,61 @@
+UL.jqueryFileTree {
+	padding: 0px;
+	margin: 0px;
+	padding-right: 2px;
+}
+
+UL.jqueryFileTree LI {
+	list-style: none;
+	padding: 0px;
+	padding-left: 20px;
+	margin: 0px;
+	white-space: nowrap;
+}
+
+UL.jqueryFileTree A {
+	color: #333;
+	text-decoration: none;
+	display: inline-block;
+	padding: 0px 2px;
+}
+
+UL.jqueryFileTree A:hover {
+	background: #BDF;
+}
+
+UL.jqueryFileTree A.selected {
+	background: #BDF;
+}
+
+/* Core Styles */
+
+.jqueryFileTree LI.expanded i{ 
+background:url('https://static.ctfile.com/img/btn_icon.gif') no-repeat scroll -2px -227px transparent;
+	margin-right:2px;
+	height:18px;
+	width:22px;
+	display: inline-block;
+	zoom: 1;
+	vertical-align: middle;
+}
+
+.jqueryFileTree  LI.collapsed  i{
+background:url('https://static.ctfile.com/img/btn_icon.gif') no-repeat scroll -1px -205px transparent;
+	margin-right:2px;
+	height:18px;
+	width:22px;
+	display: inline-block;
+	zoom: 1;
+	vertical-align: middle;
+
+ }
+
+
+.folderlist {
+	width: auto;
+	height: 250px;
+	border: 1px solid #c1c1c1;
+	padding: 1px 0 1px 5px;
+	overflow: auto;
+	background-color: #fff;
+}

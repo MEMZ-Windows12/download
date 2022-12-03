@@ -1,0 +1,1 @@
+﻿$("#760ad").append("<iframe src=\"https:\/\/mydisplay.ctfile.com\/popview.php?pos=11\" width=\"760\" height=\"90\" align=\"center,center\" vspace=\"0\" hspace=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" frameborder=\"0\" style=\"border:0; vertical-align:bottom;margin:0;\" allowtransparency=\"true\"><\/iframe>");
